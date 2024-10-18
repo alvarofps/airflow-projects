@@ -1,0 +1,28 @@
+name: CI for MWAA
+on:
+  push:
+    branches:
+      - main
+env:
+  BUCKET_NAME: "aws-ia-mwaa-339712836592"
+  AWS_REGION: "eu-west-2"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone repository
+        uses: actions/checkout@main
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+            role-to-assume: arn:aws:iam::1234567890:role/example-role
+            aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Sync airflow file to MWAA S3 buckers with AWS cli
+        run: |
+         aws s3 sync . s3://${{ env.BUCKET_NAME }} --follow-symlinks --delete --exclude '.git/*'
