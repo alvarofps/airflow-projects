@@ -27,4 +27,4 @@ jobs:
       
       - name: Sync airflow file to MWAA S3 buckers with AWS cli
         run: |
-         aws s3 sync . s3://${{ env.BUCKET_NAME }} --follow-symlinks --delete --exclude '.git/*'
+         aws s3 sync . s3://${{ env.BUCKET_NAME }} --follow-symlinks --delete --exclude '.git/*' --exclude '.github/*'
