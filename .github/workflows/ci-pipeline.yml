@@ -4,9 +4,8 @@ on:
     branches:
       - main
 env:
-  BUCKET_NAME: "aws-ia-mwaa-339712836592"
-  AWS_REGION: "eu-west-2"
-
+  BUCKET_NAME: "arn:aws:s3:::aws-ia-mwaa-339712836592"
+  
 permissions:
   id-token: write
   contents: read
