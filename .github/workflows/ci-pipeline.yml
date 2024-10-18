@@ -5,6 +5,7 @@ on:
       - main
 env:
   BUCKET_NAME: "arn:aws:s3:::aws-ia-mwaa-339712836592"
+  AWS_REGION: "eu-west-2"
 
 permissions:
   id-token: write
@@ -22,7 +23,7 @@ jobs:
         with:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: ${{ env.BUCKET_NAME }}
+            aws-region: ${{ env.AWS_REGION }}
       
       - name: Sync airflow file to MWAA S3 buckers with AWS cli
         run: |
