@@ -35,4 +35,10 @@ say_goodbye = BashOperator(
         dag=dag
     )
 
-say_hello >> say_goodbye
+say_test = BashOperator(
+        task_id='say_test',
+        bash_command="echo TEST",
+        dag=dag
+    )
+
+say_hello >> say_goodbye >> say_test
