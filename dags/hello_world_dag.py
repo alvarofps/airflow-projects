@@ -19,7 +19,7 @@ dag = DAG(
     description='Scheduled Apache Airflow DAG',
     schedule_interval='* 10 * * *',
     start_date=days_ago(1),
-    tags=['aws','demo'],
+    tags=['aws','demo', 'funciono'],
 )
 
 
